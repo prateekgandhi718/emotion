@@ -2,8 +2,15 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { signIn, useSession } from "next-auth/react";
 
 export const Heading = () => {
+  // const session = useSession()
+
+  const handleEnterEmotion = () => {
+    signIn("google")
+  }
+
   return (
     <div className="max-w-3xl space-y-4">
       <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold">
@@ -13,7 +20,7 @@ export const Heading = () => {
       <h3 className="text-base sm:text-xl md:text-2xl font-medium">
         Emotion summarizes your life from your email so that <br /> you could go live it.
       </h3>
-      <Button>
+      <Button onClick={handleEnterEmotion}>
         Enter Emotion
         <ArrowRight className="h-4 w-4 ml-2" />
       </Button>
