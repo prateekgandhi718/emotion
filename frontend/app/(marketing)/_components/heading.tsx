@@ -5,10 +5,15 @@ import { ArrowRight } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 
 export const Heading = () => {
-  // const session = useSession()
+  const session = useSession()
+  console.log (session)
 
   const handleEnterEmotion = () => {
-    signIn("google")
+    try {
+      signIn("google")
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return (
