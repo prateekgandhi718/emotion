@@ -71,6 +71,7 @@ const handler = NextAuth({
           accessToken: account.access_token,
           accessTokenExpires: Date.now() + account.expires_in * 1000,
           refreshToken: account.refresh_token,
+          idToken: account.id_token,
           user
         }
       }
@@ -85,7 +86,8 @@ const handler = NextAuth({
     },
     async session({ session, token } : {session:any, token: any}) {
       session.user = token.user
-      session.accessToken = token.accessToken
+      session.accessToken = token.accessToken //Gives access to access the google APIs (not a JWT)
+      session.idToken = token.idToken //A JWT which has user details. Can decode this in backend and then store user details in the database.
       session.error = token.error
 
       return session
