@@ -3,7 +3,7 @@ import express from 'express'
 import { OAuth2Client } from 'google-auth-library';
 import { Document } from 'mongoose';
 
-// Implement the middleware. To protect the API routes so that no other person can directly access the Api routes. Verift the ID token with the string that is set up in the frontend with which are your tokens are supposedly signed with. Also, this will take the accesstoken from the request headers, append it in the request for easy access for all my apis.
+// Implement the middleware. To protect the API routes so that no other person can directly access the Api routes. Verify the ID token using the secret GOOGLE_CLIENT_ID using the google-auth-library. Also, this will take the accesstoken from the request headers, append it in the request for easy access for all my apis.
 
 export interface CustomRequest extends express.Request {
     user?: Document<any, any, { email: string; userSub: string }>;
