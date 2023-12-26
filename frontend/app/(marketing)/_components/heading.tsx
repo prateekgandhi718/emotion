@@ -2,12 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 export const Heading = () => {
-  const session = useSession()
-  console.log (session)
-
   const handleEnterEmotion = () => {
     try {
       signIn("google")
@@ -15,7 +12,7 @@ export const Heading = () => {
       console.log(e)
     }
   }
-
+  
   return (
     <div className="max-w-3xl space-y-4">
       <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold">

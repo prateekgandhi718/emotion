@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import AuthProvider from "@/components/authProvider/authProvider";
+import { StateProvider } from "@/redux/provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,7 +43,7 @@ export default function RootLayout({
           storageKey="emotion-theme-2"
         >
           <AuthProvider>
-            {children}
+            <StateProvider>{children}</StateProvider>
           </AuthProvider>
         </ThemeProvider>
       </body>
