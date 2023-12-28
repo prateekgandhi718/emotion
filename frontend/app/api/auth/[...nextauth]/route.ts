@@ -7,6 +7,7 @@ const GOOGLE_AUTHORIZATION_URL =
     prompt: "consent",
     access_type: "offline",
     response_type: "code",
+    scope: "openid https://www.googleapis.com/auth/gmail.readonly"
   });
 
 /**
@@ -69,7 +70,7 @@ const handler = NextAuth({
       if (account && user) {
         return {
           accessToken: account.access_token,
-          accessTokenExpires: Date.now() + account.expires_in * 1000,
+          accessTokenExpires: Date.now() + account.expires_at * 1000,
           refreshToken: account.refresh_token,
           idToken: account.id_token,
           user
