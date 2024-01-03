@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { User } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
 const GOOGLE_AUTHORIZATION_URL =
@@ -7,7 +7,7 @@ const GOOGLE_AUTHORIZATION_URL =
     prompt: "consent",
     access_type: "offline",
     response_type: "code",
-    scope: "openid https://www.googleapis.com/auth/gmail.readonly"
+    scope: "openid https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/userinfo.profile"
   });
 
 /**
@@ -65,7 +65,7 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, user, account } :{token: any, user: any, account:any}) {
+    async jwt({ token, user, account} :{token: any, user: User, account:any}) {
       // Sign in initial
       if (account && user) {
         return {
@@ -90,7 +90,6 @@ const handler = NextAuth({
       session.accessToken = token.accessToken //Gives access to access the google APIs (not a JWT)
       session.idToken = token.idToken //A JWT which has user details. Can decode this in backend and then store user details in the database.
       session.error = token.error
-
       return session
     }
   }
