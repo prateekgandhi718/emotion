@@ -16,18 +16,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Session } from "next-auth";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
+import { getInitials } from "@/helpers/getInitialsFunc";
 
 const DropdownMenuDemo = ({ data }: { data: Session }) => {
-  const getInitials = (fullName: string) => {
-    const allNames = fullName.trim().split(" ");
-    const initials = allNames.reduce((acc, curr, index) => {
-      if (index === 0 || index === allNames.length - 1) {
-        acc = `${acc}${curr.charAt(0).toUpperCase()}`;
-      }
-      return acc;
-    }, "");
-    return initials;
-  };
 
   const handleLogout = () => {
     try {
@@ -77,7 +68,7 @@ const DropdownMenuDemo = ({ data }: { data: Session }) => {
             <span>API</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={handleLogout}>
+          <DropdownMenuItem className="cursor-pointer" onClick={handleLogout}>
             <LogOut className="mr-2 h-4 w-4" />
             <span>Log out</span>
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
