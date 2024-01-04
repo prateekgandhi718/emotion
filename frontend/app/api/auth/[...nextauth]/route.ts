@@ -7,7 +7,7 @@ const GOOGLE_AUTHORIZATION_URL =
     prompt: "consent",
     access_type: "offline",
     response_type: "code",
-    scope: "openid https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/userinfo.profile"
+    scope: "openid https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
   });
 
 /**
