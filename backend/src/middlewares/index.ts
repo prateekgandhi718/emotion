@@ -42,7 +42,7 @@ export const tokenRequired = async (req: CustomRequest, res: express.Response, n
             user = await createUser({email, userSub: sub})
         }
 
-        req.user = user.toObject()
+        req.user = user
         req.accessToken = accessToken
 
         // Proceed to the route (or some other middleware if any)
