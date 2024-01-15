@@ -1,11 +1,13 @@
 {
     "compilerOptions": {
+        "target": "es2015",
+        "downlevelIteration": true,
         "module": "NodeNext",
         "moduleResolution": "Node16",
         "baseUrl": "src",
         "outDir": "dist",
         "sourceMap": true,
-        "noImplicitAny": true,
+        "noImplicitAny": true
     },
     "include": ["src/**/*"],
 }
